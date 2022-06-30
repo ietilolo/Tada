@@ -23,7 +23,7 @@
   <nav class="navbar navbar-expand-md navbar-dark fixed-top">
     <div class="container-fluid">
       <img class="header-logo" src="./img/logo-icon-white-color-braces.png" height="30px" alt="" srcset="">
-      <a class="navbar-brand" href="index.html"> App name</a>
+      <a class="navbar-brand" href="index.html"> Tada</a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse"
         aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
@@ -50,26 +50,110 @@
   <!-- Main - content -->
   <main class="flex-shrink-0">
     <div class="container py-5 px-5 mt-5">
-      <h2 class="border-1 border-bottom border-dark">The Code for: App Name</h2>
+      <h2 class="border-1 border-bottom border-dark">The Code for Tada</h2>
       <div class="row row-cols-1 row-cols-lg-2">
-        <div class="col">
+        <div class="col col-lg-8">
           <pre class="line-numbers">
             <code class="language-javascript">
-              // Call hello
-              function HelloWorld(){
-                alert("Hello, world!");
+              // Get Values
+              function getValues(){
+                let start = parseInt(document.querySelector("#startValue").value);
+                let end = parseInt(document.querySelector("#endValue").value);
+                let numbers = generateNumbers(start, end);
+                displayResults(numbers, end);
+              }
+
+              // Generate Numbers
+              function generateNumbers(start = 1, end = 100){
+                let numbers = [];
+                for (let i = start; i <= end; i++){
+                  numbers.push(i);
+                }
+                return numbers;
+              }
+
+              // Filter list
+              function filterValues(numbers, end){
+                let filtered = "";
+                let templateRow = "";
+                let template = [];
+                for (let i = 0; i <= numbers.length; i++) {
+                  if ( i % 5 == 0 & i != 0 || i == end){
+                    templateRow += filtered;
+                    template.push(templateRow);
+                    filtered = "";
+                    templateRow = "";
+                  }
+                  let td = "&lt;td&gt;";
+                  let number = numbers[i];
+                  if (number % 3 == 0 && number % 5 == 0) {
+                    td += "&lt;span class='red'&gt;Tada&lt;/span&gt;&lt;/td&gt;";
+                  } else if (number % 3 == 0){
+                    td += "&lt;span class='green'&gt;Ta&lt;/span&gt;&lt;/td&gt;";
+                  } else if (number % 5 == 0){
+                    td += "&lt;span class='purple'&gt;Da&lt;/span&gt;&lt;/td&gt;";
+                  } else {
+                    td += `${number}&lt;/td&gt;`;
+                  }
+                  filtered += td;
+                }
+                return template;
+              }
+
+              // Display Results
+              function displayResults(numbers, end){
+                document.querySelector("#results").innerHTML = "";
+                let result = filterValues(numbers, end);
+                for (let i = 0; i < result.length; i++){
+                  document.querySelector("#results").innerHTML += `&lt;tr&gt;${result[i]}&lt;/t&gt;>`;
+                }
               }
             </code>
           </pre>
         </div>
-        <div class="col">
-          <p>The Code is structured in one function.</p>
-          <h5>Hello, World!</h5>
-          <p>Hello world is a function that displays a message with "Hellow, World!"</p>
+        <div class="col col-lg-4">
+          <h5>Summary</h5>
+          <p>I use functions to encapsulate each section. Our program begins by listening for the click event on button
+            then calling <code>getValues()</code>. We first grab the start & end values entered by user and
+            store to a variable. To ensure values are type Integer(int) we use the <code>parseInt()</code> to convert
+            any possible value supplied to a int or NaN.</p>
+
+          <p>We then pass our start & end variables as arguments through to our <code>generateNumbers()</code>
+            function. We then store the returned array of numbers in a variable and pass as a argument to the
+            <code>displayResults()</code> function.
+          </p>
+
+          <h5>Function explanation</h5>
+
+          <p><strong><code>generateNumbers()</code></strong> - Takes in startInt & endInt as arguments and uses a
+            for-loop to dynamically push current Index to numbers array. Then returns numbers variable containing array
+            of numbers.</p>
+
+          <p><strong><code>filterValues()</code></strong> - This function takes in an array of numbers and the end int.
+            I then declare 3 variables to serve as temporary templates for creating parts for HTML table.</p>
+
+          <p>First I check if the current iteration is equal to 5 so that I can display end the HTML Row and it to the
+            DOM. I then use a For-loop to iterate over the numbers while checking for the following conditions:</p>
+
+          <ul>
+            <li>If number is a multiple of 3 & 5 print "Tada"</li>
+            <li>If number is a multiple of 3 print "Ta"</li>
+            <li>If number is a multiple of 5 print "Da"</li>
+          </ul>
+
+          <p>After the number has been run through the If statement it's then added to the <code>filtered</code>
+            variable which will be added to the DOM. After all the checks have been performed an array of 5 table-data
+            sets are returned.</p>
+
+          <p><strong><code>displayResults()</code></strong> - Takes a array of number as arguments. Then a HTML table
+            row is created as a string and assigned to a variable to serve as a template. A For-loop is then used to
+            iterate over each number and insert into the template variable using string interpolation.</p>
         </div>
       </div>
     </div>
   </main>
+
+
 
   <!-- Footer -->
   <footer class="footer mt-auto py-3">
@@ -83,7 +167,8 @@
         </div>
         <div class="col d-flex align-items-center justify-content-start justify-content-lg-end">
           <div class="row">
-            <div class="col social"><a target="_blank" href="#"><i class="fab fa-github fa-1x"></i></a></div>
+            <div class="col social"><a target="_blank" href="https://github.com/jedidiahlolo/Tada"><i
+                  class="fab fa-github fa-1x"></i></a></div>
             <div class="col social"><a target="_blank" href="https://www.linkedin.com/in/ieti-lolo-14bb47156/"><i
                   class="fab fa-linkedin fa-1x"></i></a></div>
             <div class="col social"><a target="_blank" href="#"><i class="fab fa-twitter fa-1x"></i></a></div>
