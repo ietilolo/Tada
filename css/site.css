@@ -1,0 +1,66 @@
+:root {
+  --primary-color: #21293d;
+  --secondary-color: #ff780a;
+  --dark-color: #202123;
+  --white-color: #e7e7e7;
+}
+
+.header-logo {
+  padding-right: 10px;
+}
+
+main>.container {
+      padding: 60px 15px 0;
+      margin-bottom: 5rem;
+    }
+
+    .sticky-footer {
+      position: sticky;
+      left: 0;
+      bottom: 0;
+      width: 100%;
+    }
+
+body {
+  color: var(--dark-color);
+}
+
+nav {
+  background-color: var(--dark-color);
+}
+
+h1, h2, h3, h4, h5, h6 {
+  color: var(--primary-color);
+}
+
+.bs-icon {
+  color: rgb(143, 34, 143);
+}
+.js-icon {
+  color: rgb(205, 205, 29);
+}
+
+.css-icon {
+  color: rgb(0, 98, 255);
+}
+
+.html5-icon {
+  color: rgb(255, 119, 0);
+}
+
+.checklist i {
+  color: var(--secondary-color);
+}
+
+footer {
+  background-color: var(--dark-color);
+}
+
+footer .social a {
+  color: var(--secondary-color);
+  opacity: .7;
+}
+
+footer .social a:hover {
+  opacity: 1;
+}
