@@ -64,3 +64,13 @@ footer .social a {
 footer .social a:hover {
   opacity: 1;
 }
+
+.red {
+  color: rgb(206, 59, 59);
+}
+.green {
+  color: rgb(72, 205, 39);
+}
+.purple {
+  color: rgb(148, 35, 148);
+}
